@@ -1,0 +1,2 @@
+export function money(cents: number, currency: string): string { try { return new Intl.NumberFormat(undefined,{style:'currency',currency:currency.toUpperCase()}).format(cents/100); } catch { return `${(cents/100).toFixed(2)} ${currency}`; } }
+export function cents(value: number): number | null { if (!Number.isFinite(value) || value <= 0 || Math.abs(value * 100 - Math.round(value * 100)) > 0.000001 || !Number.isSafeInteger(Math.round(value * 100))) return null; return Math.round(value * 100); }
